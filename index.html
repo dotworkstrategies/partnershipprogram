@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dotwork Strategies — Партнерство</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #152661;
+    --red: #D0294B;
+    --light-bg: #EBEFF4;
+    --white: #FFFFFF;
+    --gray: #6B7A99;
+    --light-gray: #F7F8FB;
+    --soft-gray: #F0F2F6;
+    --border: #C8CEDB;
+    --on-navy: #D6DFEB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: #2a3654; line-height: 1.6; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; background: var(--navy); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 100; padding: 0 48px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; padding: 8px 0; }
+  .nav-logo svg { height: 24px; width: auto; display: block; color: var(--on-navy); }
+  .nav-links { display: flex; gap: 4px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.12); }
+
+  .hero { padding: 152px 0 92px; background: #99BBE0; position: relative; overflow: hidden; }
+  .hero-inner { max-width: 1080px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+  .hero-watermark { position: absolute; bottom: -48px; right: -16px; opacity: 0.08; font-size: 168px; font-weight: 700; color: var(--navy); letter-spacing: -8px; user-select: none; line-height: 1; pointer-events: none; }
+  .hero-tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--white); opacity: 0.85; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(34px, 4.8vw, 56px); font-weight: 600; color: var(--white); line-height: 1.14; max-width: 880px; margin-bottom: 22px; letter-spacing: -0.5px; }
+  .hero-sub { font-size: 18px; color: rgba(255,255,255,0.9); max-width: 760px; line-height: 1.6; }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 92px 48px; }
+  .section { margin-bottom: 108px; scroll-margin-top: 84px; }
+  .section:last-child { margin-bottom: 40px; }
+  .section-header { margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+  .section-title { font-size: clamp(26px, 3.2vw, 36px); font-weight: 600; color: var(--navy); letter-spacing: -0.6px; line-height: 1.15; }
+
+  .lead { font-size: 19px; color: var(--navy); line-height: 1.55; font-weight: 500; max-width: 800px; margin: 0 0 24px; }
+  .para { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 800px; margin-bottom: 16px; }
+  .para b { color: var(--navy); font-weight: 600; }
+
+  .services { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .service-tag { font-size: 14px; font-weight: 500; color: var(--navy); background: var(--light-bg); padding: 10px 18px; border-radius: 10px; }
+
+  .block-nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 40px; }
+  .block-nav a { font-size: 12px; font-weight: 600; color: var(--navy); background: var(--light-bg); padding: 7px 15px; border-radius: 20px; text-decoration: none; transition: all 0.2s; }
+  .block-nav a:hover { background: var(--navy); color: var(--white); }
+
+  .subsection { scroll-margin-top: 84px; margin-top: 56px; }
+  .subsection-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .subsection-title { font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 14px; letter-spacing: -0.3px; }
+  .subsection-note { font-size: 16px; color: var(--gray); line-height: 1.65; max-width: 820px; margin-bottom: 24px; }
+  .subsection-note b { color: var(--navy); font-weight: 600; }
+
+  /* Flow — numbered circles on a line (per screenshot style) */
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; position: relative; }
+  .flow-line { position: absolute; top: 17px; left: 0; right: 0; height: 1px; background: var(--border); z-index: 0; }
+  .flow-step { position: relative; z-index: 1; padding-right: 28px; }
+  .flow-badge { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: white; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+  .flow-step:last-child .flow-badge { background: var(--red); }
+  .flow-title { font-size: 16px; font-weight: 600; color: var(--navy); line-height: 1.35; margin-bottom: 10px; }
+  .flow-text { font-size: 14px; color: var(--gray); line-height: 1.55; }
+
+  .units-note { } /* unused placeholder kept empty */
+
+  .clients-wrap { margin-top: 8px; }
+  .client-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 600; background: var(--navy); color: var(--white); padding: 8px 18px; border-radius: 22px; }
+
+  /* Requests — 4 cats */
+  .req-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .req-cat { background: var(--light-gray); border: 1px solid var(--border); border-radius: 16px; padding: 28px 30px; }
+  .req-cat-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--red); margin-bottom: 18px; }
+  .req-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .req-list li { font-size: 14px; color: #2a3654; line-height: 1.5; padding-left: 18px; position: relative; }
+  .req-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--border); }
+
+  /* Tabs (active 70% left, inactive 30% right) + content panel */
+  .scen-tabs { display: flex; gap: 16px; margin-top: 32px; align-items: stretch; }
+  .scen-tab { flex: 1 1 50%; border-radius: 16px; padding: 26px 28px; cursor: pointer; position: relative; min-height: 104px; transition: background 0.3s; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+  .scen-tab .scen-name { font-size: clamp(18px, 2vw, 22px); font-weight: 600; letter-spacing: -0.3px; }
+  .scen-tab .scen-desc { font-size: 13px; line-height: 1.45; margin-top: 8px; }
+  /* active = navy (fixed width) */
+  .scen-tab.active { background: var(--navy); }
+  .scen-tab.active .scen-name { color: var(--white); }
+  .scen-tab.active .scen-desc { color: rgba(255,255,255,0.55); }
+  /* inactive = light (fixed width) */
+  .scen-tab.inactive { background: var(--light-bg); border: 1px solid var(--border); }
+  .scen-tab.inactive .scen-name { color: var(--navy); }
+  .scen-tab.inactive .scen-desc { color: var(--gray); }
+  .scen-tab.inactive:hover { background: #e3e9f3; }
+
+  .scen-panel { display: none; margin-top: 16px; border: 1px solid var(--border); border-radius: 16px; background: var(--white); animation: scenFade 0.4s ease; }
+  .scen-panel.shown { display: block; }
+  @keyframes scenFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .scen-inner { padding: 34px 36px; }
+
+  .when-line { font-size: 15px; color: #2a3654; line-height: 1.65; margin-bottom: 26px; }
+  .when-line b { color: var(--navy); font-weight: 600; }
+
+  .inner-head { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--red); margin: 0 0 16px; }
+
+  .steps { display: flex; flex-direction: column; }
+  .step { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; padding: 15px 0; border-bottom: 1px solid var(--soft-gray); }
+  .step:last-child { border-bottom: none; }
+  .step-num { width: 24px; height: 24px; border-radius: 7px; background: var(--navy); color: white; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-text { font-size: 14px; color: #2a3654; line-height: 1.6; }
+  .step-text b { color: var(--navy); font-weight: 600; }
+
+  .tip { margin-top: 12px; background: var(--light-bg); border-radius: 8px; padding: 14px 18px; font-size: 13px; color: #2a3654; line-height: 1.6; }
+  .tip b { color: var(--navy); font-weight: 600; }
+
+  .script-box { background: var(--soft-gray); border: 1px solid var(--border); border-radius: 12px; padding: 26px 28px; margin-top: 26px; }
+  .script-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+  .script-text { font-size: 15px; color: #2a3654; line-height: 1.8; white-space: pre-line; }
+  .script-text .ph { background: var(--light-bg); color: var(--navy); font-weight: 600; padding: 1px 7px; border-radius: 5px; }
+  .copy-btn { margin-top: 18px; font-size: 13px; font-weight: 600; color: var(--navy); padding: 9px 20px; border-radius: 8px; border: 1.5px solid var(--navy); background: transparent; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+  .copy-btn:hover { background: var(--navy); color: white; }
+
+  /* Value steps */
+  .value-list { display: grid; gap: 14px; margin-top: 8px; }
+  .value-item { display: grid; grid-template-columns: 28px 1fr; gap: 18px; align-items: start; padding: 24px 30px; background: var(--light-gray); border: 1px solid var(--border); border-radius: 14px; transition: all 0.2s; }
+  .value-item:hover { border-color: rgba(21,38,97,0.22); box-shadow: 0 4px 18px rgba(21,38,97,0.07); }
+  .value-num { width: 26px; height: 26px; border-radius: 7px; background: var(--navy); color: white; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .value-text { font-size: 15px; color: #2a3654; line-height: 1.65; }
+  .value-text b { color: var(--navy); font-weight: 600; }
+  .diag-link-wrap { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .diag-share { cursor: pointer; font-family: inherit; }
+  .diag-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--navy); padding: 12px 22px; border-radius: 10px; border: 1.5px solid var(--navy); background: var(--light-gray); text-decoration: none; transition: all 0.2s; }
+  .diag-btn:hover { background: var(--navy); color: white; }
+  .diag-btn svg { width: 16px; height: 16px; }
+
+  .value-note { font-size: 15px; color: var(--gray); line-height: 1.7; max-width: 820px; margin-top: 26px; }
+  .value-note b { color: var(--navy); font-weight: 600; }
+
+  .principle { background: var(--navy); border-radius: 16px; padding: 38px 44px; margin-top: 36px; }
+  .principle-big { font-size: 21px; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 12px; }
+  .principle p { font-size: 16px; color: var(--on-navy); line-height: 1.7; }
+
+  /* Finance */
+  .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .fin-card { background: var(--light-gray); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; }
+  .fin-card-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+  .fin-rate { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--soft-gray); }
+  .fin-rate:last-child { border-bottom: none; }
+  .fin-rate .name { font-size: 14px; color: var(--gray); }
+  .fin-rate .price { font-size: 17px; font-weight: 700; color: var(--navy); letter-spacing: -0.3px; }
+  .fin-rate .price small { font-size: 12px; font-weight: 500; color: var(--gray); }
+
+  .calc-intro { font-size: 16px; color: var(--gray); line-height: 1.65; max-width: 760px; margin: 0 0 30px; }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+  .calc-controls { background: var(--light-gray); border: 1px solid var(--border); border-radius: 18px; padding: 34px 36px; }
+  .calc-block { margin-bottom: 30px; }
+  .calc-block:last-child { margin-bottom: 0; }
+  .calc-label { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline; }
+  .calc-label .val { font-size: 22px; font-weight: 700; color: var(--red); letter-spacing: -0.5px; }
+  .calc-hint { font-size: 12px; color: var(--gray); margin-bottom: 16px; line-height: 1.5; }
+  input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 6px; background: var(--border); outline: none; cursor: pointer; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 3px solid white; box-shadow: 0 2px 8px rgba(21,38,97,0.3); cursor: pointer; }
+  input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); border: 3px solid white; box-shadow: 0 2px 8px rgba(21,38,97,0.3); cursor: pointer; }
+  .split-readout { display: flex; gap: 12px; margin-top: 16px; }
+  .split-side { flex: 1; text-align: center; padding: 14px 10px; border-radius: 10px; background: white; border: 1px solid var(--border); }
+  .split-side .cnt { font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
+  .split-side .nm { font-size: 11px; color: var(--gray); margin-top: 4px; line-height: 1.35; }
+  .fixed-note { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .fixed-note-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+  .fixed-row { display: flex; justify-content: space-between; font-size: 13px; padding: 7px 0; }
+  .fixed-row span:first-child { color: var(--gray); }
+  .fixed-row span:last-child { color: var(--navy); font-weight: 600; }
+
+  .calc-results { background: #99BBE0; border-radius: 18px; padding: 36px 40px; position: sticky; top: 84px; }
+  .results-title { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); opacity: 0.85; margin-bottom: 24px; }
+  .result-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.25); }
+  .result-label { font-size: 14px; color: rgba(255,255,255,0.85); }
+  .result-val { font-size: 18px; font-weight: 600; color: white; letter-spacing: -0.3px; }
+  .result-breakdown { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; padding: 18px 22px; margin: 22px 0; }
+  .bd-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; }
+  .bd-row span:first-child { color: rgba(255,255,255,0.85); }
+  .bd-row span:last-child { color: white; font-weight: 500; }
+  .result-bonus { background: var(--navy); border-radius: 14px; padding: 26px 28px; margin-top: 24px; text-align: center; }
+  .bonus-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--on-navy); opacity: 0.85; margin-bottom: 8px; }
+  .bonus-val { font-size: 30px; font-weight: 700; color: var(--white); letter-spacing: -0.5px; line-height: 1.1; }
+  .bonus-sub { font-size: 12px; color: var(--on-navy); opacity: 0.85; margin-top: 10px; }
+
+  .report-list { display: grid; gap: 14px; }
+  .report-item { display: grid; grid-template-columns: 18px 1fr; gap: 16px; align-items: start; padding: 22px 28px; background: var(--light-gray); border: 1px solid var(--border); border-radius: 14px; }
+  .report-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; margin-top: 6px; }
+  .report-head { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+  .report-text { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  .contact-card { background: var(--navy); border-radius: 16px; padding: 36px 42px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .contact-name { font-size: 21px; font-weight: 600; color: white; }
+  .contact-role { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .contact-tg { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: var(--navy); background: white; padding: 14px 28px; border-radius: 10px; text-decoration: none; transition: all 0.2s; }
+  .contact-tg:hover { background: var(--light-bg); }
+
+  footer { background: var(--navy); padding: 38px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer .nav-logo { padding: 8px 0; }
+  footer .nav-logo svg { height: 24px; color: var(--on-navy); }
+  .footer-text { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+  /* Intermediate widths: shrink the menu so it never touches the logo */
+  @media (max-width: 1080px) and (min-width: 901px) {
+    nav { padding: 0 28px; }
+    .nav-links { gap: 0; }
+    .nav-links a { font-size: 12px; padding: 8px 10px; }
+  }
+  @media (max-width: 980px) and (min-width: 901px) {
+    .nav-links a { font-size: 11px; padding: 8px 7px; letter-spacing: -0.2px; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    .hero { padding: 130px 0 64px; }
+    .hero-inner { padding: 0 22px; }
+    main { padding: 64px 22px; }
+    .section { margin-bottom: 80px; }
+    .req-cats, .fin-grid, .calc-grid { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: 1fr; gap: 20px; }
+    .flow-line { display: none; }
+    .flow-step { padding-right: 0; padding-left: 50px; min-height: 34px; }
+    .flow-badge { position: absolute; left: 0; top: 0; margin-bottom: 0; }
+    /* tabs stack vertically on mobile, full width */
+    .scen-tabs { flex-direction: column; }
+    .calc-results { position: static; }
+    .contact-card { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 646 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M288.844 29.0528H318.371L336.161 83.7032L351.383 29.0528H378.709L350.466 121.125H322.773L302.966 61.6578L283.526 121.125H255.283L226.673 29.0528H255.649L270.871 83.518L288.844 29.0528Z" fill="currentColor"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M427.358 126C454.012 126 475.62 104.173 475.62 77.2485C475.62 50.3236 454.012 28.4969 427.358 28.4969C400.703 28.4969 379.095 50.3236 379.095 77.2485C379.095 104.173 400.703 126 427.358 126ZM427.358 96.7491C438.02 96.7491 446.663 88.0184 446.663 77.2485C446.663 66.4785 438.02 57.7478 427.358 57.7478C416.696 57.7478 408.053 66.4785 408.053 77.2485C408.053 88.0184 416.696 96.7491 427.358 96.7491Z" fill="currentColor"/>
+      <path d="M183.11 101.902C188.27 94.1421 191.28 84.8024 191.28 74.7524C191.28 53.8128 178.211 35.9566 159.863 29.0527H170.601C175.247 29.0527 184.723 29.0527 184.723 29.0527C184.723 29.0527 184.723 18.4931 184.723 14.047V6.70833L209.665 0V29.0527H227.455L227.088 53.6917H209.665V88.1493C209.665 94.5715 213.027 97.7826 219.752 97.7826C221.953 97.7826 224.398 97.4739 227.088 96.8564V120.199C223.664 121.928 218.835 122.792 212.599 122.792C203.185 122.792 195.727 120.137 190.225 114.826C186.695 111.342 184.324 107.034 183.11 101.902Z" fill="currentColor"/>
+      <path d="M645.146 29.2714L599.939 78.4568H616.691L645.88 121.344H611.768L590.311 88.9238L581.324 98.7424V121.344H553.448V0.21875H581.324V60.2092L609.017 29.2714H645.146Z" fill="currentColor"/>
+      <path d="M544.091 56.5176V28.7292H535.63C532.06 28.7292 528.584 29.8606 525.702 31.9599L513.097 41.1413V28.7292H486.137V120.801H514.013V57.2396L535.779 56.5176H544.091Z" fill="currentColor"/>
+      <path d="M160.918 75.6176C160.918 86.5121 152.096 95.3439 141.213 95.3439C130.331 95.3439 121.509 86.5121 121.509 75.6176C121.509 64.723 130.331 55.8912 141.213 55.8912C152.096 55.8912 160.918 64.723 160.918 75.6176Z" fill="currentColor"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M98.2747 51.4301L98.6491 0H70.5706L70.1962 36.6975C66.2028 30.3259 57.8417 27.1401 45.1128 27.1401C32.0095 27.1401 21.2149 31.7627 12.7289 41.0077C4.24297 50.1279 0 61.6842 0 75.6767C0 89.9191 4.36776 101.663 13.1033 110.908C21.8388 120.028 32.8206 124.588 46.0487 124.588C51.5396 124.588 56.4689 123.589 60.8367 121.59C65.3293 119.466 68.6987 116.78 70.945 113.532C70.945 116.53 71.1946 119.528 71.6937 122.527H99.0234C98.5243 117.03 98.2747 111.47 98.2747 105.848V99.805C94.2495 92.6586 91.9529 84.4066 91.9529 75.6176C91.9529 66.8285 94.2495 58.5765 98.2747 51.4301ZM28.6401 75.8641C28.6401 68.4931 30.6367 62.8086 34.6301 58.8107C38.7483 54.8129 43.74 52.8139 49.6053 52.8139C55.4706 52.8139 60.3999 54.8129 64.3933 58.8107C68.5115 62.8086 70.5706 68.4931 70.5706 75.8641C70.5706 83.2352 68.5115 88.9821 64.3933 93.1049C60.3999 97.1028 55.4706 99.1017 49.6053 99.1017C43.74 99.1017 38.7483 97.1028 34.6301 93.1049C30.6367 88.9821 28.6401 83.2352 28.6401 75.8641Z" fill="currentColor"/>
+    </svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Про нас</a></li>
+    <li><a href="#how">Як знайомити</a></li>
+    <li><a href="#value">Що отримає клієнт</a></li>
+    <li><a href="#finance">Фінансова мотивація</a></li>
+    <li><a href="#reporting">Звітність</a></li>
+    <li><a href="#contact">Контакти</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-watermark">partnership</div>
+  <div class="hero-inner">
+    <div class="hero-tag">Dotwork Strategies · Партнерство</div>
+    <h1>Знайомте нас із тими, кому ми справді корисні.</h1>
+    <p class="hero-sub">Партнерська програма Dotwork Strategies: кому ми корисні, як коректно нас знайомити, що отримує клієнт ще до будь-якої комерційної пропозиції та як працює партнерська винагорода.</p>
+  </div>
+</section>
+
+<main>
+
+  <!-- БЛОК 1 -->
+  <section class="section fade-in" id="about">
+    <div class="section-header">
+      <h2 class="section-title">Dotwork Strategies</h2>
+    </div>
+    <p class="lead">Будуємо самостійні високоефективні команди — такі, що ведуть бізнес уперед без постійного контролю власника.</p>
+    <p class="para">Dotwork Strategies — консалтингова компанія у сфері системного менеджменту та організаційного розвитку. Допомагаємо власникам і управлінським командам навести системний порядок: вибудувати структуру, впровадити регулярний менеджмент, налагодити фінанси та підготувати бізнес до зростання. Працюємо руками, всередині компанії, а не на рівні порад.</p>
+
+    <div class="services">
+      <span class="service-tag">Стратегічні сесії</span>
+      <span class="service-tag">Оргдизайн</span>
+      <span class="service-tag">Регулярний менеджмент</span>
+      <span class="service-tag">Фінансове управління</span>
+      <span class="service-tag">Розвиток керівників</span>
+    </div>
+
+    <div class="clients-wrap" style="margin-top:48px;">
+      <div class="subsection-label">Наші клієнти</div>
+      <div class="client-tags">
+        <span class="tag">2TOP</span>
+        <span class="tag">PEANUT TRADE</span>
+        <span class="tag">HAYAT ESTATE</span>
+        <span class="tag">SUN HAVEN</span>
+        <span class="tag">SPANISH LIFE</span>
+        <span class="tag">SMART DEVELOPMENT</span>
+        <span class="tag">TOP BEAUTY</span>
+        <span class="tag">HAIRCHECK</span>
+        <span class="tag">FIALAN</span>
+        <span class="tag">SUZIE</span>
+        <span class="tag">8TAG</span>
+        <span class="tag">КОПИЧИНЕЦЬКІ КОВБАСИ</span>
+        <span class="tag">BOOKIMED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- БЛОК 2 -->
+  <section class="section fade-in" id="how">
+    <div class="section-header">
+      <h2 class="section-title">Як знайомити</h2>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-badge">1</div>
+        <div class="flow-title">Бачите запит</div>
+        <div class="flow-text">Помічаєте ситуацію, де ми можемо бути корисні</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge">2</div>
+        <div class="flow-title">Пропонуєте знайомство</div>
+        <div class="flow-text">Спокійно, без тиску, коли відчуваєте цінність</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge">3</div>
+        <div class="flow-title">Створюєте чат</div>
+        <div class="flow-text">Спільна група в Telegram — і знайомите з нами</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge">4</div>
+        <div class="flow-title">Решту беремо на себе</div>
+        <div class="flow-text">Клієнт у надійних руках</div>
+      </div>
+    </div>
+
+    <div class="block-nav" style="margin-top:56px;">
+      <a href="#requests">Запити, які ми вирішуємо</a>
+      <a href="#scenTabs" data-scen="reactive">Реактивне знайомство</a>
+      <a href="#scenTabs" data-scen="proactive">Проактивне знайомство</a>
+    </div>
+
+    <!-- Requests -->
+    <div class="subsection" id="requests" style="margin-top:8px;">
+      <div class="subsection-label">Орієнтир</div>
+      <div class="subsection-title">Запити, які ми вирішуємо</div>
+      <p class="subsection-note">Якщо хтось із вашого кола говорить щось із цього — саме час познайомити.</p>
+
+      <div class="req-cats">
+        <div class="req-cat">
+          <div class="req-cat-title">Структура і ролі</div>
+          <ul class="req-list">
+            <li>Побудувати організаційну структуру компанії</li>
+            <li>Визначити ролі, зони відповідальності та функції співробітників</li>
+            <li>Синхронізувати роботу між підрозділами компанії</li>
+            <li>Провести організаційну трансформацію без втрати ключових людей</li>
+            <li>Створити систему, яка працює незалежно від постійної участі власника</li>
+          </ul>
+        </div>
+        <div class="req-cat">
+          <div class="req-cat-title">Регулярний менеджмент</div>
+          <ul class="req-list">
+            <li>Впровадити регулярний менеджмент та систему управлінських зустрічей</li>
+            <li>Побудувати систему контролю виконання задач та досягнення результатів</li>
+            <li>Впровадити KPI, OKR або іншу систему управління результативністю</li>
+            <li>Побудувати управлінську звітність та отримати прозору картину бізнесу</li>
+            <li>Підвищити відповідальність та залученість співробітників</li>
+          </ul>
+        </div>
+        <div class="req-cat">
+          <div class="req-cat-title">Команда і керівники</div>
+          <ul class="req-list">
+            <li>Найняти сильних керівників або сформувати управлінську команду</li>
+            <li>Розвинути керівників та підвищити їхню управлінську компетентність</li>
+            <li>Найняти операційного директора або керівника напрямку</li>
+            <li>Зрозуміти, яких людей наймати та як сформувати сильну команду</li>
+            <li>Перестати бути «вузьким місцем» у бізнесі та делегувати управління команді</li>
+          </ul>
+        </div>
+        <div class="req-cat">
+          <div class="req-cat-title">Масштабування, фінанси, стратегія</div>
+          <ul class="req-list">
+            <li>Проконсультуватися щодо масштабування бізнесу та підготовки до росту</li>
+            <li>Підготувати бізнес до масштабування або відкриття нових напрямків</li>
+            <li>Впорядкувати фінансове управління та контроль прибутковості</li>
+            <li>Провести стратегічну сесію та визначити пріоритети розвитку компанії</li>
+            <li>Зрозуміти, якою має бути система управління в компанії</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenarios -->
+    <div class="subsection">
+      <div class="subsection-label">Два сценарії знайомства</div>
+      <div class="subsection-title">Як саме почати розмову</div>
+      <p class="subsection-note"><b>Реактивне знайомство</b> — коли клієнт сам озвучив запит на наш продукт чи послугу, і ви просто з'єднуєте його з нами.<br><br><b>Проактивне знайомство</b> — коли запиту ще не було, але ви з власної ініціативи бачите цінність і пропонуєте знайомство, попередньо уточнивши, чи є в клієнта така потреба.<br><br>Оберіть сценарій, що ближчий до вашої ситуації, і дотримуйтесь плану дій нижче.</p>
+
+      <!-- Tabs: active goes left 70%, inactive right 30% -->
+      <div class="scen-tabs" id="scenTabs">
+        <div class="scen-tab active" id="tab-reactive" onclick="selectScen('reactive')">
+          <span class="scen-name">Реактивне знайомство</span>
+          <span class="scen-desc">У клієнта є чіткий запит, і він озвучив його вам напряму</span>
+        </div>
+        <div class="scen-tab inactive" id="tab-proactive" onclick="selectScen('proactive')">
+          <span class="scen-name">Проактивне знайомство</span>
+          <span class="scen-desc">Клієнт не озвучував запиту — ви самі вирішили познайомити його з нами</span>
+        </div>
+      </div>
+
+      <!-- Content panels -->
+      <div class="scen-panel shown" id="panel-reactive">
+        <div class="scen-inner">
+          <p class="when-line">Клієнт напряму озвучив запит. Вам лишається познайомити його з потрібною людиною.</p>
+
+          <div class="inner-head">Як діяти</div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text">Повідомити, що в тебе є топові знайомі, які займаються саме тим, що потрібно партнеру.</div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text">У двох словах представити.</div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text">Запропонувати клієнту створити групу, щоб познайомити.</div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text">Коли клієнт подякував і підтвердив бажання познайомитись — створюємо чат в телеграмі.</div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text">Називаємо його «Любомир / імʼя клієнта – запит клієнта».</div></div>
+            <div class="step"><div class="step-num">6</div><div class="step-text">Вішаємо на аватарку телеграм чату, гарну картинку, що буде виділяти цей чат.</div></div>
+            <div class="step"><div class="step-num">7</div><div class="step-text">Створивши групу між нами та клієнтом, представляєте нас один одному, просячи нас створити максимальну цінність з цього питання (запиту клієнта).</div></div>
+          </div>
+
+          <div class="script-box">
+            <div class="script-label">Приклад тексту для інтро</div>
+            <p class="script-text" id="script1">Колеги, вирішив вас познайомити. З одного боку, мій хороший друг / клієнт / знайомий <span class="ph">Петро Петренко</span> <em><b>(підставити імʼя клієнта)</b></em> – він власник топової української компанії <span class="ph">______________</span> <em><b>(вказати назву компанії клієнта)</b></em>. Ми з ним спілкувалися і він озвучив запит <span class="ph">______________</span> <em><b>(озвучити запит клієнта)</b></em>. З іншого - команда Dotwork Strategies: Любомир та Вадим. Одні з найкращих у тому, щоб навести системний порядок у малому й середньому бізнесі: вибудовують самостійні команди, впроваджують регулярний менеджмент, налагоджують звітність через показники. Починають з діагностики бізнесу — швидко бачать, де саме система не складається.
+Любомире, будь ласка, прошу вас максимально допомогти <span class="ph">______________</span> <em><b>(підставити імʼя клієнта)</b></em>, підказати, направити, проконсультувати, так, як ви це вмієте! Буду дуже вам за це вдячний. Якщо в результаті ви домовитеся про співпрацю, буду тільки радий. Та й взагалі круто знайомити масштабних людей між собою!</p>
+            <button class="copy-btn" onclick="copyScript('script1', this)">Скопіювати</button>
+          </div>
+
+          <div class="tip"><b>Підказка:</b> якщо поки соромитесь записувати відео — просто скопіюйте та адаптуйте текст вище.</div>
+        </div>
+      </div>
+
+      <div class="scen-panel" id="panel-proactive">
+        <div class="scen-inner">
+          <p class="when-line">Ви рекомендуєте нас за власною ініціативою, прив'язуючи це до цінності, яку ми готові надати цій людині. Спершу — уточнюєте, чи є в клієнта така потреба зараз.</p>
+
+          <div class="inner-head">Як діяти</div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text">Написати в телеграм клієнту, або подзвонити йому озвучивши ідею познайомити його з топовим підрядником / партнером по _____ (підставляєте ваш напрямок бізнесу). Обіцяючи при цьому, якусь конкретну цінність, яку цей партнер готовий надати безкоштовно для клієнта (заздалегідь узгоджену). Якщо клієнт підтверджує, рухаємось далі.</div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text">Створюєте чат, називаємо його “Партнер / імʼя клієнта – знайомство”.</div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text">Вішаємо на аватарку телеграм чату, гарну картинку, що буде виділяти цей чат.</div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text">Створивши групу між нами та клієнтом представляєте нас один одному, просячи нас створити максимальну цінність в рамках нашої експертизи.</div></div>
+          </div>
+
+          <div class="tip"><b>Підказка:</b> опційно використовуємо перший пункт коли не відчуваємо, що клієнт гарно зреагує на чат без дозволу. Тоді попередньо це з ним узгоджуємо. Якщо ж відчуваємо, що питати не потрібно, то одразу переходимо до другого пункту.</div>
+
+          <div class="script-box">
+            <div class="script-label">Приклад тексту для інтро</div>
+            <p class="script-text" id="script2">Колеги, вирішив вас познайомити. З одного боку, мій хороший друг / клієнт / знайомий <span class="ph">Петро Петренко</span> <em><b>(підставити імʼя клієнта)</b></em> – він власник топової української компанії <span class="ph">______________</span> <em><b>(вказати назву компанії клієнта)</b></em> Він постійно розвивається, вдосконалюється, та масштабує власний бізнес. З іншого - команда Dotwork Strategies: Любомир та Вадим. Одні з найкращих у тому, щоб навести системний порядок у малому й середньому бізнесі: вибудовують самостійні команди, впроваджують регулярний менеджмент, налагоджують звітність через показники. Починають з діагностики бізнесу — швидко бачать, де саме система не складається.
+Любомире, будь ласка, прошу вас максимально допомогти <span class="ph">______________</span> <em><b>(підставити імʼя клієнта)</b></em>, підказати, направити, проконсультувати, так, як ви це вмієте! Буду дуже вам за це вдячний. Якщо в результаті ви домовитеся про співпрацю, буду тільки радий. Та й взагалі круто знайомити масштабних людей між собою!</p>
+            <button class="copy-btn" onclick="copyScript('script2', this)">Скопіювати</button>
+          </div>
+
+          <div class="tip"><b>Підказка:</b> якщо поки соромитесь записувати відео — просто скопіюйте та адаптуйте текст вище.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- БЛОК 3 -->
+  <section class="section fade-in" id="value">
+    <div class="section-header">
+      <h2 class="section-title">Що отримає клієнт</h2>
+    </div>
+    <p class="lead">Перш за все для нас важливо створити цінність для людини, з якою ви нас знайомите.</p>
+    <p class="para">Ми розуміємо, наскільки важливою є для вас ваша репутація. Тому й розробили таку досконалу воронку продажів власних послуг через створення глибокої цінності для клієнта, на різних його етапах для клієнта, що прийшов від вас!</p>
+
+    <div class="value-list">
+      <div class="value-item">
+        <div class="value-num">1</div>
+        <div class="value-text"><b>Проводимо зустріч-знайомство</b> — годинна розмова, у рамках якої створюємо максимальну цінність для клієнта, розповідаючи про всі нюанси побудови менеджменту.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">2</div>
+        <div class="value-text"><b>Знайомимо клієнта з 3-4 потенційними клієнтами та підрядниками</b>, які можуть змінити його бізнес на краще.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">3</div>
+        <div class="value-text"><b>Надаємо безплатні матеріали з менеджменту</b> — статті про командне планування, операційний ритм, профілі позицій ключових працівників, шаблони та інші документи.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">4</div>
+        <div class="value-text"><b>Проводимо безкоштовну діагностику систем бізнесу</b> — людей та системи, за результатами якої готуємо деталізоване заключення з порадами, рекомендаціями та зонами росту. Окремою зустріччю презентуємо результати діагностики, створюючи максимальну цінність для клієнта.
+          <div class="diag-link-wrap">
+            <!-- ↓↓↓ ПОСИЛАННЯ НА ДІАГНОСТИКУ — заміни URL тут, якщо зміниться (в двох місцях: href та data-share) ↓↓↓ -->
+            <a class="diag-btn" href="https://drohova-a11y.github.io/partnershipprogram/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Подивитися приклад діагностики
+            </a>
+            <button class="diag-btn diag-share" data-share="https://drohova-a11y.github.io/partnershipprogram/" onclick="shareDiag(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>
+              Поділитися
+            </button>
+            <!-- ↑↑↑ кінець посилання ↑↑↑ -->
+          </div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">5</div>
+        <div class="value-text"><b>Надаємо комерційну пропозицію</b> після глибокого занурення — з рішеннями, які виведуть бізнес клієнта на новий рівень. Чітко показуємо дорожню карту, наш час залучення та плановий результат, щоб у клієнта була тотальна ясність і правильні очікування від проекту.</div>
+      </div>
+    </div>
+
+    <p class="value-note">Ми абсолютно не тиснемо на клієнта, з точки зору рішення про співпрацю, ба більше, дозволяємо йому, не купувати, або розглянути конкурентів, щоб в нього не було відчуття, що він тепер зобов'язаний купити.</p>
+
+    <div class="principle">
+      <div class="principle-big">Клієнт отримує велику користь протягом взаємодії з нами, ще до співпраці.</div>
+      <p>Саме це ви рекомендуєте. Передані вами клієнти будуть надзвичайно вам вдячні за це знайомство.</p>
+    </div>
+  </section>
+
+  <!-- БЛОК 4 -->
+  <section class="section fade-in" id="finance">
+    <div class="section-header">
+      <h2 class="section-title">Фінансова мотивація</h2>
+    </div>
+    <p class="lead">Якщо знайомство переростає у проєкт — ви отримуєте 10% від обігу за вашим клієнтом.</p>
+    <p class="para">Без складних умов. Це проста подяка за довіру та якісне знайомство.</p>
+
+    <div class="subsection" style="margin-top:40px;">
+      <div class="subsection-label">Наші продукти</div>
+      <div class="subsection-title">Середні чеки</div>
+      <div class="fin-grid" style="margin-top:8px;">
+        <div class="fin-card">
+          <div class="fin-card-label">Стратегічна сесія</div>
+          <div class="fin-rate"><span class="name">Тривалість</span><span class="price"><small>2–3 дні</small></span></div>
+          <div class="fin-rate"><span class="name">Чек</span><span class="price">8 000 €</span></div>
+          <div class="fin-rate"><span class="name">Ваш бонус</span><span class="price">800 €</span></div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-card-label">Оргдизайн</div>
+          <div class="fin-rate"><span class="name">Тривалість</span><span class="price"><small>3 місяці</small></span></div>
+          <div class="fin-rate"><span class="name">Чек</span><span class="price">36 900 €</span></div>
+          <div class="fin-rate"><span class="name">Ваш бонус</span><span class="price">3 690 €</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-label">Прикиньте самі</div>
+      <div class="subsection-title">Скільки це за рік</div>
+      <p class="calc-intro">Логіка проста: знайомства → частина з них стає клієнтами → ви отримуєте 10%. Посуньте повзунки й подивіться орієнтир.</p>
+
+      <div class="calc-grid">
+        <div class="calc-controls">
+          <div class="calc-block">
+            <div class="calc-label"><span>Знайомств на місяць</span><span class="val" id="chatsVal">4</span></div>
+            <div class="calc-hint">Скільки людей зі свого кола ви знайомите з нами щомісяця</div>
+            <input type="range" id="chatsSlider" min="1" max="12" value="4" step="1">
+          </div>
+
+          <div class="calc-block">
+            <div class="calc-label"><span>Що вони обирають</span></div>
+            <div class="calc-hint">Як розподіляються ті, хто став клієнтом, між двома продуктами</div>
+            <input type="range" id="splitSlider" min="0" max="12" value="8" step="1">
+            <div class="split-readout">
+              <div class="split-side">
+                <div class="cnt" id="stratCnt">8</div>
+                <div class="nm">Стратегічна сесія</div>
+              </div>
+              <div class="split-side">
+                <div class="cnt" id="orgCnt">4</div>
+                <div class="nm">Оргдизайн</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fixed-note">
+            <div class="fixed-note-title">Що зафіксовано</div>
+            <div class="fixed-row"><span>Стає клієнтами</span><span>кожен 4-й (25%)</span></div>
+            <div class="fixed-row"><span>Ваш бонус</span><span>10%</span></div>
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <div class="results-title">Орієнтир за рік</div>
+          <div class="result-row"><span class="result-label">Знайомств за рік</span><span class="result-val" id="chatsYear">48</span></div>
+          <div class="result-row"><span class="result-label">Стають клієнтами</span><span class="result-val" id="clientsYear">12</span></div>
+
+          <div class="result-breakdown">
+            <div class="bd-row"><span><span id="stratClientsBd">8</span> × стратегічна сесія</span><span id="stratRev">64 000 €</span></div>
+            <div class="bd-row"><span><span id="orgClientsBd">4</span> × оргдизайн</span><span id="orgRev">147 600 €</span></div>
+          </div>
+
+          <div class="result-row"><span class="result-label">Обіг за вашими клієнтами</span><span class="result-val" id="totalRev">211 600 €</span></div>
+
+          <div class="result-bonus">
+            <div class="bonus-label">Ваш бонус · 10%</div>
+            <div class="bonus-val" id="bonusVal">21 160 €</div>
+            <div class="bonus-sub">на рік</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- БЛОК 5 -->
+  <section class="section fade-in" id="reporting">
+    <div class="section-header">
+      <h2 class="section-title">Звітність і виплата</h2>
+    </div>
+    <p class="lead">Усе прозоро й передбачувано. Домовляємось про порядок наперед.</p>
+
+    <div class="report-list" style="margin-top:36px;">
+      <div class="report-item">
+        <div class="report-dot"></div>
+        <div>
+          <div class="report-head">Підсумки в кінці фінансового року</div>
+          <div class="report-text">Раз на рік зводимо результати співпраці за вашими клієнтами.</div>
+        </div>
+      </div>
+      <div class="report-item">
+        <div class="report-dot"></div>
+        <div>
+          <div class="report-head">Взаємозалік від бонусів</div>
+          <div class="report-text">Робимо взаємозалік — ви нам, ми вам.</div>
+        </div>
+      </div>
+      <div class="report-item">
+        <div class="report-dot"></div>
+        <div>
+          <div class="report-head">Виплата залишку</div>
+          <div class="report-text">Залишок виплачуємо один одному.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section fade-in" id="contact">
+    <div class="section-header">
+      <h2 class="section-title">Почнімо з розмови</h2>
+    </div>
+    <p class="lead">Напишіть, якщо хочете обговорити партнерство або порадитися, кого варто познайомити з нами.</p>
+    <div class="contact-card">
+      <div>
+        <div class="contact-name">Любомир Федоришин</div>
+        <div class="contact-role">Dotwork Strategies</div>
+      </div>
+      <a class="contact-tg" href="https://t.me/fedoryshynL" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="nav-logo">
+    <svg viewBox="0 0 646 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M288.844 29.0528H318.371L336.161 83.7032L351.383 29.0528H378.709L350.466 121.125H322.773L302.966 61.6578L283.526 121.125H255.283L226.673 29.0528H255.649L270.871 83.518L288.844 29.0528Z" fill="currentColor"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M427.358 126C454.012 126 475.62 104.173 475.62 77.2485C475.62 50.3236 454.012 28.4969 427.358 28.4969C400.703 28.4969 379.095 50.3236 379.095 77.2485C379.095 104.173 400.703 126 427.358 126ZM427.358 96.7491C438.02 96.7491 446.663 88.0184 446.663 77.2485C446.663 66.4785 438.02 57.7478 427.358 57.7478C416.696 57.7478 408.053 66.4785 408.053 77.2485C408.053 88.0184 416.696 96.7491 427.358 96.7491Z" fill="currentColor"/>
+      <path d="M183.11 101.902C188.27 94.1421 191.28 84.8024 191.28 74.7524C191.28 53.8128 178.211 35.9566 159.863 29.0527H170.601C175.247 29.0527 184.723 29.0527 184.723 29.0527C184.723 29.0527 184.723 18.4931 184.723 14.047V6.70833L209.665 0V29.0527H227.455L227.088 53.6917H209.665V88.1493C209.665 94.5715 213.027 97.7826 219.752 97.7826C221.953 97.7826 224.398 97.4739 227.088 96.8564V120.199C223.664 121.928 218.835 122.792 212.599 122.792C203.185 122.792 195.727 120.137 190.225 114.826C186.695 111.342 184.324 107.034 183.11 101.902Z" fill="currentColor"/>
+      <path d="M645.146 29.2714L599.939 78.4568H616.691L645.88 121.344H611.768L590.311 88.9238L581.324 98.7424V121.344H553.448V0.21875H581.324V60.2092L609.017 29.2714H645.146Z" fill="currentColor"/>
+      <path d="M544.091 56.5176V28.7292H535.63C532.06 28.7292 528.584 29.8606 525.702 31.9599L513.097 41.1413V28.7292H486.137V120.801H514.013V57.2396L535.779 56.5176H544.091Z" fill="currentColor"/>
+      <path d="M160.918 75.6176C160.918 86.5121 152.096 95.3439 141.213 95.3439C130.331 95.3439 121.509 86.5121 121.509 75.6176C121.509 64.723 130.331 55.8912 141.213 55.8912C152.096 55.8912 160.918 64.723 160.918 75.6176Z" fill="currentColor"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M98.2747 51.4301L98.6491 0H70.5706L70.1962 36.6975C66.2028 30.3259 57.8417 27.1401 45.1128 27.1401C32.0095 27.1401 21.2149 31.7627 12.7289 41.0077C4.24297 50.1279 0 61.6842 0 75.6767C0 89.9191 4.36776 101.663 13.1033 110.908C21.8388 120.028 32.8206 124.588 46.0487 124.588C51.5396 124.588 56.4689 123.589 60.8367 121.59C65.3293 119.466 68.6987 116.78 70.945 113.532C70.945 116.53 71.1946 119.528 71.6937 122.527H99.0234C98.5243 117.03 98.2747 111.47 98.2747 105.848V99.805C94.2495 92.6586 91.9529 84.4066 91.9529 75.6176C91.9529 66.8285 94.2495 58.5765 98.2747 51.4301ZM28.6401 75.8641C28.6401 68.4931 30.6367 62.8086 34.6301 58.8107C38.7483 54.8129 43.74 52.8139 49.6053 52.8139C55.4706 52.8139 60.3999 54.8129 64.3933 58.8107C68.5115 62.8086 70.5706 68.4931 70.5706 75.8641C70.5706 83.2352 68.5115 88.9821 64.3933 93.1049C60.3999 97.1028 55.4706 99.1017 49.6053 99.1017C43.74 99.1017 38.7483 97.1028 34.6301 93.1049C30.6367 88.9821 28.6401 83.2352 28.6401 75.8641Z" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="footer-text">Dotwork Strategies · Партнерство</div>
+</footer>
+
+<script>
+  // Tabs: active goes left (70%), inactive right (30%); content panel swaps
+  function selectScen(id) {
+    ['reactive','proactive'].forEach(s => {
+      const tab = document.getElementById('tab-' + s);
+      const panel = document.getElementById('panel-' + s);
+      if (s === id) {
+        tab.classList.add('active'); tab.classList.remove('inactive');
+        panel.classList.add('shown');
+      } else {
+        tab.classList.add('inactive'); tab.classList.remove('active');
+        panel.classList.remove('shown');
+      }
+    });
+  }
+  document.querySelectorAll('.block-nav a[data-scen]').forEach(a => {
+    a.addEventListener('click', () => selectScen(a.getAttribute('data-scen')));
+  });
+
+  function copyScript(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = 'Скопійовано';
+      setTimeout(() => { btn.innerHTML = orig; }, 1800);
+    });
+  }
+
+  function shareDiag(btn) {
+    const url = btn.getAttribute('data-share');
+    navigator.clipboard.writeText(url).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = 'Посилання скопійовано';
+      setTimeout(() => { btn.innerHTML = orig; }, 1800);
+    });
+  }
+
+  const STRAT_PRICE = 8000, ORG_PRICE = 36900, BONUS_RATE = 0.10;
+  const chatsSlider = document.getElementById('chatsSlider');
+  const splitSlider = document.getElementById('splitSlider');
+  const fmt = n => Math.round(n).toLocaleString('uk-UA').replace(/\u00A0/g, ' ').replace(/,/g, ' ') + ' €';
+
+  function recalc(changed) {
+    const chatsMonth = +chatsSlider.value;
+    const chatsYear = chatsMonth * 12;
+    const clients = chatsYear / 4;
+    splitSlider.max = clients;
+    if (changed === 'chats') splitSlider.value = Math.round(clients * 2 / 3);
+    if (+splitSlider.value > clients) splitSlider.value = clients;
+    const stratClients = +splitSlider.value;
+    const orgClients = clients - stratClients;
+    const stratRev = stratClients * STRAT_PRICE;
+    const orgRev = orgClients * ORG_PRICE;
+    const totalRev = stratRev + orgRev;
+    const bonus = totalRev * BONUS_RATE;
+    document.getElementById('chatsVal').textContent = chatsMonth;
+    document.getElementById('stratCnt').textContent = stratClients;
+    document.getElementById('orgCnt').textContent = orgClients;
+    document.getElementById('chatsYear').textContent = chatsYear;
+    document.getElementById('clientsYear').textContent = clients;
+    document.getElementById('stratClientsBd').textContent = stratClients;
+    document.getElementById('orgClientsBd').textContent = orgClients;
+    document.getElementById('stratRev').textContent = fmt(stratRev);
+    document.getElementById('orgRev').textContent = fmt(orgRev);
+    document.getElementById('totalRev').textContent = fmt(totalRev);
+    document.getElementById('bonusVal').textContent = fmt(bonus);
+  }
+  chatsSlider.addEventListener('input', () => recalc('chats'));
+  splitSlider.addEventListener('input', () => recalc('split'));
+  recalc();
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
